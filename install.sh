@@ -58,10 +58,14 @@ for cmd in sc-tp.py sc-tf.json sc-_parse.py sc-add sc-_common sc-picker sidechat
     cp -p "$DIR"/$cmd "$insdir"
 done
 
-for pkg in mansnip llcat streamdown; do
-    echo "  ✅ $pkg"
-    $PIP $pkg &> /dev/null
-done
+$PIP install git+https://github.com/EGmux/llcat.git@main &> /dev/null
+echo "  ✅ llact"
+
+$PIP install git+https://github.com/EGmux/Mansnip.git@master &> /dev/null
+echo "  ✅ Mansnip"
+
+$PIP install git+https://github.com/EGmux/Streamdown.git@main &> /dev/null
+echo "  ✅ Streamdown"
 
 if [[ ! -d ~/.fzf ]]; then
     git clone --quiet --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
