@@ -355,7 +355,7 @@ ll() {
     [[ "$TOOLS" == "ON" ]] && tool=( "-tf" "$DIR/sc-tf.json" "-tp" "$DIR/sc-tp.py" "-mf" "$CONFIG/mcp.json" )
 
     llcat -c "$convo_id" "${tool[@]}" \
-        -bq result -u "$SERVER_URL" -s "$SYSTEM" \
+        -bq debug -u "$SERVER_URL" -s "$SYSTEM" \
         -sk "$SERVER_AUTH" "$@" 2> >(cat >&2) 
 }
 
