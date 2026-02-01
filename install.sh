@@ -11,7 +11,7 @@ if ! command -v unzip > /dev/null; then
 fi
 
 if [[ $PIP =~ /pipx$ ]]; then 
-    PIP="$PIP upgrade --install"
+    PIP="$PIP install"
     pybin=$(pipx environment 2> /dev/null | grep PIPX_BIN_DIR=/ | cut -d = -f 2)
     # really old pipx - apps is used even in the intl tests i did
     if [[ -z "$pybin" ]]; then
@@ -58,13 +58,13 @@ for cmd in sc-tp.py sc-tf.json sc-_parse.py sc-add sc-_common sc-picker sidechat
     cp -p "$DIR"/$cmd "$insdir"
 done
 
-$PIP install git+https://github.com/EGmux/llcat.git@main &> /dev/null
-echo "  ✅ llact"
+$PIP --force "git+https://github.com/EGmux/llcat.git@main#egg=llcat" &> /dev/null
+echo "  ✅ llcat"
 
-$PIP install git+https://github.com/EGmux/Mansnip.git@master &> /dev/null
+$PIP  --force "git+https://github.com/EGmux/Mansnip.git@master#egg=Mansnip" &> /dev/null
 echo "  ✅ Mansnip"
 
-$PIP install git+https://github.com/EGmux/Streamdown.git@main &> /dev/null
+$PIP  --force "git+https://github.com/EGmux/Streamdown.git@main#egg=Streamdown" &> /dev/null
 echo "  ✅ Streamdown"
 
 if [[ ! -d ~/.fzf ]]; then
